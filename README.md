@@ -1,31 +1,46 @@
-# 🎥 Video Transcription and Q\&A System
+# 🎥 Video Transcription & Multi-Agent Q&A System with LangGraph
 
-This project provides an end-to-end pipeline that allows users to input a YouTube video URL and interactively ask questions about its content. It combines powerful tools like OpenAI Whisper, Pinecone, and Tavily search, orchestrated via a multi-agent system built with LangGraph to deliver accurate, context-rich answers.
+This project offers a robust pipeline for transcribing YouTube videos and enabling advanced question-answering (QA) about their content using a **LangGraph-based multi-agent system**. It combines **audio transcription (Whisper)**, **vector-based retrieval (Pinecone)**, and **web augmentation (Tavily)** to provide enriched, real-time answers to user queries.
 
 ---
 
-## 🚀 Features
+## 🧠 Key Features
 
-✅ **YouTube Video Input**
-➡ Accepts a YouTube URL and automatically downloads the video.
+- 🔗 **YouTube Integration**: Accepts any video URL, downloads, and extracts audio.
+- 🧏 **Transcription via Whisper**: Uses OpenAI Whisper for accurate multi-language transcription.
+- 🧠 **RAG-based QA**: Uses Retrieval-Augmented Generation (RAG) to answer questions based on video content.
+- 🌍 **Web Search Augmentation**: Enhances responses using **Tavily API** for up-to-date information.
+- 🕸️ **LangGraph Multi-Agent Flow**: Modular agents for translation, retrieval, and synthesis.
+- ✨ **Prompt Engineering**: Custom prompts to optimize understanding and responses.
 
-✅ **Audio Transcription**
-➡ Extracts and transcribes audio using [OpenAI Whisper](https://github.com/openai/whisper).
+---
 
-✅ **Vector Storage with Pinecone**
-➡ Transcription is chunked, embedded, and stored in a Pinecone vector database for efficient retrieval.
+## 🖼️ System Overview
 
-✅ **Retrieval-Augmented Generation (RAG)**
-➡ Questions are answered using information retrieved from the transcription and web search results.
+The following LangGraph workflow illustrates the pipeline:
 
-✅ **Web Search Augmentation**
-➡ Uses [Tavily](https://www.tavily.com/) to retrieve the latest and most relevant information to supplement video-based answers.
+![LangGraph System Flow](./docs/langgraph_flow.png) <!-- Add actual image path -->
 
-✅ **LangGraph Multi-Agent Orchestration**
-➡ Coordinates specialized agents (e.g., transcriber, retriever, web-searcher, generator) for modular, scalable reasoning.
+**LangGraph Nodes:**
 
-✅ **Prompt Engineering Optimization**
-➡ Custom prompts are designed to enhance the answer quality by guiding agent behavior intelligently.
+- `__start__` → `translatation` (if non-English)
+- `query_translation`: Normalize the question
+- `research_info_retrieval`: Retrieve from transcription using RAG
+- `web_Retrieval_chain`: Retrieve from Tavily web
+- `__end__`: Final answer generation
+
+Each state is maintained in a `GraphState` like below:
+
+```python
+class GraphState(TypedDict):
+    initial_query: str
+    query_language: str
+    final_query: str
+    new_query: str
+    Rag_search: str
+    web_research: str
+    context: str
+    final_answer: str
 
 ---
 

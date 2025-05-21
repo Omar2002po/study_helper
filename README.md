@@ -21,6 +21,9 @@ The following LangGraph workflow illustrates the pipeline:
 
 ![LangGraph System Flow](examples/__results___28_0.jpg) 
 
+Each user query flows through translation, Pinecone RAG search, and Tavily web search in a LangGraph-powered workflow. The final answer is synthesized from both retrieved knowledge bases.
+
+
 **LangGraph Nodes:**
 
 - `__start__` → `translatation` (if non-English)
@@ -143,13 +146,10 @@ Update `.env` with your credentials:
 ```
 project/
 ├── data/               # Raw and processed data
-├── notebooks/          # Reference notebooks
 ├── src/                # Core source code
 │   ├── __init__.py
 │   ├── data/           # Data handling
-│   ├── models/         # LangGraph agents and prompts
-│   ├── utils/          # Helper utilities
-│   └── visualization/  # Optional visualization tools
+│   └── models          # LangGraph agents and prompts
 ├── tests/              # Unit and integration tests
 ├── README.md           # Project documentation
 ├── requirements.txt    # Python dependencies
@@ -164,8 +164,7 @@ project/
 * **Whisper** – Automatic Speech Recognition (ASR)
 * **Pinecone** – Vector database for fast semantic search
 * **Tavily API** – Live web search augmentation
-* **OpenAI / GROQ** – Language models for answer generation
-* **FFmpeg** – Audio processing
+* **OpenAI / GROQ** – Models for answer generation
 
 ---
 

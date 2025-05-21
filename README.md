@@ -41,7 +41,7 @@ class GraphState(TypedDict):
     web_research: str
     context: str
     final_answer: str
-
+```
 ---
 
 ## 🧠 System Overview
@@ -114,30 +114,6 @@ Update `.env` with your credentials:
 
 ---
 
-## 🛠 Usage
-
-### 🖥 CLI Interface
-
-```bash
-python -m src.main --video_url "https://www.youtube.com/watch?v=your_video_id"
-```
-
-### 🐍 Python API
-
-```python
-from src.pipeline import VideoQAPipeline
-
-pipeline = VideoQAPipeline()
-
-# Step 1: Process video
-pipeline.process_video("https://www.youtube.com/watch?v=your_video_id")
-
-# Step 2: Ask a question
-answer = pipeline.ask_question("What is the main topic of this video?")
-print(answer)
-```
-
----
 
 ## 🗂 Project Structure
 
@@ -165,7 +141,8 @@ project/
 * **Whisper** – Automatic Speech Recognition (ASR)
 * **Pinecone** – Vector database for fast semantic search
 * **Tavily API** – Live web search augmentation
-* **GROQ** – Language models for answer generation
+* **OpenAI / GROQ** – Language models for answer generation
+* **FFmpeg** – Audio processing
 
 ---
 
@@ -173,6 +150,13 @@ project/
 
 This project is licensed under the [MIT License](LICENSE).
 Feel free to use, modify, and distribute it with attribution.
+
+---
+
+
+## 📬 Contact
+
+For any inquiries or collaborations, please reach out via GitHub or \[[omarabdelnasser313@gmail.com](omarabdelnasser313@gmail.com)].
 
 ---
 

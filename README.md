@@ -19,7 +19,7 @@ This project offers a robust pipeline for transcribing YouTube videos and enabli
 
 The following LangGraph workflow illustrates the pipeline:
 
-![LangGraph System Flow](.examples/__results___28_0.jpg) 
+![LangGraph System Flow](examples/__results___28_0.jpg) 
 
 **LangGraph Nodes:**
 

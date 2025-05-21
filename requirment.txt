@@ -1,0 +1,14 @@
+langchain
+langchain-groq
+groq
+pinecone-client
+gpt4all
+torch
+torchaudio
+pytube
+whisper
+langchain-community
+pydantic
+python-dotenv
+pytest
+numpy
